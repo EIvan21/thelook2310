@@ -25,4 +25,22 @@ persist_with: edher_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: order_items {}
+explore: order_items {
+  join: orders {
+    relationship: many_to_one
+    type: inner
+    sql_on: ${order_items.order_id} = ${orders.order_id} ;;
+  }
+
+  join: inventory_items {
+    sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
+    type: inner
+    relationship: many_to_one
+  }
+
+  join: products {
+    sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    type: inner
+    relationship: many_to_one
+  }
+}
