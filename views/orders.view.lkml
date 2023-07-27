@@ -2,10 +2,6 @@
 view: orders {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name:
-    -- if dev -- demo_db.billion_orders
-    -- if prod -- demo_db.hundred_million_orders
-    ;;
 
 
   # This primary key is the unique key for this table in the underlying database.
