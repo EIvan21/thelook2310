@@ -4,7 +4,7 @@ view: +order_items {
   sql_table_name:
 
   -- if prod -- {{_user_attributes['prod_schema']}}.order_items
-  -- if dev --  {{_user_attributes['dev_schema']}}{{_user_attributes['dev_table']}}
+  -- if dev --  {{_user_attributes['dev_schema']}}.{{_user_attributes['dev_table']}}
 
 
     ;;
