@@ -44,8 +44,9 @@ view: order_items {
 
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year,month_name]
     sql: ${TABLE}.returned_at ;;
+
   }
 
   dimension: sale_price {
@@ -59,12 +60,25 @@ view: order_items {
 
   measure: total_sale_price {
     type: sum
-    sql: ${sale_price} ;;  }
+    sql: ${sale_price} ;;
+    value_format_name:decimal_2
+
+
+    }
   measure: average_sale_price {
     type: average
-    sql: ${sale_price} ;;  }
+    sql: ${sale_price} ;;
+    value_format_name: decimal_2
+    }
+
   measure: count {
     type: count
     drill_fields: [id, inventory_items.id, orders.id]
+  }
+
+  filter: date_selector {
+    label: "Date Range"
+    description: "Time between bucket start and bucket end"
+    type:  date
   }
 }
